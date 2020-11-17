@@ -1,0 +1,5 @@
+<label for="order">Order By</label>
+<select id="order" [(ngModel)]="sortSelected" (change)="handleSortSelectChange()">
+    <option value="lengthAsc">Length Ascending</option>
+    <option value="lengthDesc">Length Descending</option>
+</select>

@@ -1,0 +1,10 @@
+<app-filter (onSortSelected)="handleSortSelected($event)"></app-filter>
+<section class="bookGallery">
+    <div *ngFor = "let book of sortedBooksArr" class="bookCard">
+        <img src={{book.image}} alt="">
+        <p>{{book.title}}</p>
+        <p class="author" *ngFor = "let author of book.authors">
+            {{author}}
+        </p>
+    </div>
+</section>
