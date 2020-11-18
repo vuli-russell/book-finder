@@ -7,23 +7,24 @@ import firebase from "firebase";
 })
 export class CollectionsService {
 
-  constructor(private afs: AngularFirestore) { }
+  booksStream;
+
+  constructor(private afs: AngularFirestore) {
+    this.booksStream = this.afs.doc(`users/${this.user}`).valueChanges()
+  }
 
   //get this on auth change eventually
   user: string = "testuser";
 
-  books: any = "ayyy";
-
   addBookToFavorite(book){
+    delete book.isFav
     this.afs.doc(`users/${this.user}`).set({books: firebase.firestore.FieldValue.arrayUnion(book)},{merge:true}) 
   }
   
   deleteBookFromFavorites(book){
+    //remove is fav from book before deleting so it matches firebase object
+    delete book.isFav
     this.afs.doc(`users/${this.user}`).set({books: firebase.firestore.FieldValue.arrayRemove(book)},{merge:true}) 
-  }
-
-  getFavorites(){
-    this.books = this.afs.doc(`users/${this.user}`).valueChanges()
   }
   
 }

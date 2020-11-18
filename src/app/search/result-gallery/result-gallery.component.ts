@@ -13,17 +13,29 @@ export class ResultGalleryComponent implements OnInit {
   booksArr: Array<CleanedBookInfo>;
 
   @Input() set setBooksArray(value: CleanedBookInfo[]) {
-    this.booksArr = value;
-    this.sortedBooksArr = value;
+    this.booksArr = value
+    this.sortedBooksArr = this.booksArr;
   }
 
   sortedBooksArr: Array<CleanedBookInfo>;
-  
+  favourites: string[]
+
   constructor(
     private collectionsService: CollectionsService) { }
-  
-  ngOnInit(): void { }
-  
+
+  ngOnInit(): void {
+    this.collectionsService.booksStream.subscribe(
+      //get favorite books and map their ids
+      res => {
+        console.log(res)
+        this.favourites = res ? res.books.map(book => book.id) : []
+        this.booksArr = this.booksArr.map(book => ({...book, isFav: this.favourites.includes(book.id) ? true : false}));
+        this.sortedBooksArr = this.sortedBooksArr.map(book => ({...book, isFav: this.favourites.includes(book.id) ? true : false}));
+      }
+    )
+    
+  }
+
   handleSortSelected(sortOrder: string){
     this.sortBooksArr(sortOrder)
   }
@@ -48,8 +60,8 @@ export class ResultGalleryComponent implements OnInit {
       default:
         break;
     }
-    this.sortedBooksArr = sortFunction ? this.booksArr.sort(sortFunction) : this.booksArr;    
+    this.sortedBooksArr = sortFunction ? this.booksArr.sort(sortFunction) : this.booksArr;
   }
-  
+
 
 }

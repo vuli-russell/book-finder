@@ -13,9 +13,8 @@ export class CollectionComponent implements OnInit {
   books: any;
 
   ngOnInit(): void {
-    this.books = this.collectionsService.getFavorites();
-    this.collectionsService.books.subscribe(
-      res => {this.books = res.books}
+    this.collectionsService.booksStream.subscribe(
+      res => {this.books = res ? res.books : []}
     )
   }
 }

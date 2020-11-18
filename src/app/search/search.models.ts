@@ -44,6 +44,7 @@ export interface CleanedBookInfo {
     authors: string[];
     image: string;
     categories: string[];
-    infoLink: string
-    pageCount: number
+    infoLink: string;
+    pageCount: number;
+    isFav ? : boolean;
 }
