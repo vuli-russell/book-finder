@@ -4,7 +4,7 @@
         <h1>Your Collection</h1>
     </header>
     
-        <div *ngIf="books.length;then bookCards else addBooksMessage"></div>
+        <div *ngIf="books;then bookCards else addBooksMessage"></div>
 
         <ng-template #bookCards>
             <div class="gallery">
