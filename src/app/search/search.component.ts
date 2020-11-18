@@ -22,6 +22,5 @@ export class SearchComponent implements OnInit {
     await this.searchService.getBooksByAuthor(this.searchText)
     this.booksArr = this.searchService.books
     this.areBooksLoaded = true;
-    console.log(this.booksArr)
   }
 }

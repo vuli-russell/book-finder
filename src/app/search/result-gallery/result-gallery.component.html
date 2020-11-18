@@ -6,5 +6,6 @@
         <p class="author" *ngFor = "let author of book.authors">
             {{author}}
         </p>
+        <button (click)="handleAddFavorite(book)">Add to Favorites</button>
     </div>
 </section>

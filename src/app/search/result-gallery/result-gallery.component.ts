@@ -1,15 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GoogleBookItem, CleanedBookInfo } from "../search.models";
+import { CleanedBookInfo } from "../search.models";
+import { AngularFirestore } from "@angular/fire/firestore";
+import firebase from "firebase";
 
 @Component({
   selector: 'app-result-gallery',
   templateUrl: './result-gallery.component.html',
   styleUrls: ['./result-gallery.component.scss']
 })
+
 export class ResultGalleryComponent implements OnInit {
 
   booksArr: Array<CleanedBookInfo>;
-  
+
   @Input() set setBooksArray(value: CleanedBookInfo[]) {
     this.booksArr = value;
     this.sortedBooksArr = value;
@@ -17,7 +20,7 @@ export class ResultGalleryComponent implements OnInit {
 
   sortedBooksArr: Array<CleanedBookInfo>;
   
-  constructor() { }
+  constructor(private afs: AngularFirestore) { }
   
   ngOnInit(): void {
   }
@@ -25,6 +28,12 @@ export class ResultGalleryComponent implements OnInit {
   handleSortSelected(sortOrder: string){
     this.sortBooksArr(sortOrder)
   }
+
+  handleAddFavorite(book){
+    this.afs.doc("users/testuser").set({books: firebase.firestore.FieldValue.arrayUnion(book)},{merge:true})    
+  }
+
+
 
   sortBooksArr(sortOrder?:string) {
     let sortFunction: (a:CleanedBookInfo,b:CleanedBookInfo) => number;

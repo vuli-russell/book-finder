@@ -5,6 +5,7 @@ export interface GoogleBooksResponse {
 }
 
 export interface GoogleBookItem {
+    id: string;
     accessInfo: object;
     etag: string;
     kind: string;
@@ -38,6 +39,7 @@ export interface GoogleBookInfo {
 }
 
 export interface CleanedBookInfo {
+    id: string;
     title: string;
     authors: string[];
     image: string;

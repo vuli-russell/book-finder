@@ -8,11 +8,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ResultGalleryComponent } from './search/result-gallery/result-gallery.component';
 import { FilterComponent } from './search/result-gallery/filter/filter.component';
+import { AngularFireModule } from "@angular/fire";
 
 const routes: Routes = [
   {path: "", component: SearchComponent},
   {path: "collection", component: CollectionComponent}
 ]
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDQV5FQxZso1mxLElMTidZoNhZz4tFsOFo",
+  authDomain: "book-find-7d50b.firebaseapp.com",
+  databaseURL: "https://book-find-7d50b.firebaseio.com",
+  projectId: "book-find-7d50b",
+  storageBucket: "book-find-7d50b.appspot.com",
+  messagingSenderId: "366415703390",
+  appId: "1:366415703390:web:3de3fd978dfb1d4b5db3cf",
+  measurementId: "G-8Y9EL9S16Z"
+};
+
 
 @NgModule({
   declarations: [
@@ -23,6 +36,7 @@ const routes: Routes = [
     FilterComponent,
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
