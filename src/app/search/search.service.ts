@@ -18,11 +18,11 @@ export class SearchService {
         let info = book.volumeInfo;
         return{
           id: book.id,
-          title: info.title,
-          authors: info.authors,
+          title: info.title ? info.title : "",
+          authors: info.authors ? info.authors : [],
           image: info.imageLinks ? info.imageLinks.thumbnail : "",
-          categories: info.categories,
-          infoLink: info.infoLink,
+          categories: info.categories ? info.categories : [],
+          infoLink: info.infoLink ? info.infoLink : "",
           pageCount: info.pageCount ? info.pageCount : 0
         }
       })

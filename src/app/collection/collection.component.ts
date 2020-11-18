@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { CollectionsService } from "../collections.service";
 
 @Component({
   selector: 'app-collection',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private collectionsService: CollectionsService) { }
+
+  books: any;
 
   ngOnInit(): void {
+    this.books = this.collectionsService.getFavorites();
+    this.collectionsService.books.subscribe(
+      res => {this.books = res.books}
+    )
   }
-
 }

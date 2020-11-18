@@ -1,5 +1,5 @@
 <section class="search">
-    <input [(ngModel)]="searchText" class="search__input" type="text" placeholder="Search by Author...">
+    <input [(ngModel)]="searchText" class="search__input" (keyup.enter)="handleSearchClick()" type="text" placeholder="Search by Author...">
     <button class="btn-search" (click)="handleSearchClick()">Search</button>
     <app-result-gallery *ngIf="areBooksLoaded" [setBooksArray]="booksArr"></app-result-gallery>
 </section>
