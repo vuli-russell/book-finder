@@ -4,12 +4,15 @@
     <p class="author" *ngFor = "let author of book.authors">
         {{author}}
     </p>
+    <a href={{book.infoLink}}>
+        More Info <fa-icon [icon]="faLink"></fa-icon>
+    </a>
     
     <div *ngIf="book.isFav;then removeFav else addFav"></div>
     <ng-template #removeFav>
-        <button (click)="handleRemoveFavorite(book)">Remove From Favorites</button>
+        <fa-icon class="star" (click)="handleRemoveFavorite(book)" [icon]="faSolidStar"></fa-icon>
     </ng-template>
     <ng-template #addFav>
-        <button (click)="handleAddFavorite(book)">Add to Favorites</button>
+        <fa-icon class="star" (click)="handleAddFavorite(book)" [icon]="faOutlineStar"></fa-icon>
     </ng-template>
 </div>

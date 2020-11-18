@@ -1,15 +1,18 @@
 <section class="collection">
-    <header class="header">
+    <header class="landing">
         <img src="../../assets/images/bookshelves.svg" alt="bookshelves">
         <h1>Your Collection</h1>
     </header>
-    <div class="gallery">
-        <div *ngFor = "let book of books" class="bookCard">
-            <img src={{book.image}} alt="">
-            <p>{{book.title}}</p>
-            <p class="author" *ngFor = "let author of book.authors">
-                {{author}}
-            </p>
-        </div>
-    </div>
+    
+        <div *ngIf="books.length;then bookCards else addBooksMessage"></div>
+
+        <ng-template #bookCards>
+            <div class="gallery">
+                <app-book-card *ngFor = "let book of books" [book]="book"></app-book-card>
+            </div>
+        </ng-template>
+        <ng-template #addBooksMessage>
+            <p>Your Collection is empty!</p>
+            <p>Please <a href="/">Search</a> for books to add them to your Collection</p>
+        </ng-template>
 </section>

@@ -1,6 +1,6 @@
 @import "../../styles.scss";
 
-.search {
+.searchPage {
     position: relative;
     top: 100px;
     display: flex;
@@ -8,26 +8,28 @@
     align-items: center;
     padding: $base-spacing;
     border-radius: $base-spacing;
-
+    
     .btn {
-        position: relative;
-        left: 0;
         background-color: $accent-color; 
         font-size: $text-size;
         width: $text-size*4;
         transition: all 0.5s ease;
-
-        i {
-        }
+        height: $text-size*1.5;
+        overflow: hidden;
+        margin: $base-spacing;
         
         &:hover {
             width: $text-size*6;
-            left: $text-size*1;
             
             &::after{
                 content: "Search";
             }
         } 
+    }
+
+    .searchInput {
+        margin: $base-spacing;
+        padding: $base-spacing * 0.5;
     }
 
     img {
@@ -37,8 +39,5 @@
         margin: $base-spacing*4;
     }
 
-    .search__input {
-        margin: $base-spacing;
-        padding: $base-spacing * 0.5;
-    }
+
 }

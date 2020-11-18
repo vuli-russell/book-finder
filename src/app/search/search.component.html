@@ -1,6 +1,8 @@
-<section class="search">
+<section class="searchPage">
     <img src="../../assets/images/reading.svg" alt="reading image">
-    <input [(ngModel)]="searchText" class="search__input" (keyup.enter)="handleSearchClick()" type="text" placeholder="Search by Author...">
-    <button class="btn" (click)="handleSearchClick()"><fa-icon [icon]="faSearch"></fa-icon></button>
+    <div class="search">
+        <input [(ngModel)]="searchText" class="searchInput" (keyup.enter)="handleSearchClick()" type="text" placeholder="Search by Author...">
+        <button class="btn" (click)="handleSearchClick()"><fa-icon [icon]="faSearch"></fa-icon></button>
+    </div>
     <app-result-gallery *ngIf="areBooksLoaded" [setBooksArray]="booksArr"></app-result-gallery>
 </section>

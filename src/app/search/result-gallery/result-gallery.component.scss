@@ -1,5 +1,13 @@
+@import "../../../styles.scss";
+
+.filter {
+    padding: $base-spacing;
+    margin: $base-spacing;
+}
+
 .bookGallery {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    justify-items: stretch;
 }

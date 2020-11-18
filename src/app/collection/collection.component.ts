@@ -14,7 +14,7 @@ export class CollectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.collectionsService.booksStream.subscribe(
-      res => {this.books = res ? res.books : []}
+      res => {this.books = res ? res.books.map(book => ({...book, isFav: true})) : []}
     )
   }
 }
