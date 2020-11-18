@@ -1,8 +1,19 @@
 <header class="header">
     <h1>BookFinder</h1>
     <div class="links">
-        <a routerLink="/" routerLinkActive="active">Search</a>
-        <a routerLink="/collection" routerLinkActive="active">Collection</a>
+        <a class="headerIcon" routerLink="/" routerLinkActive="active"><fa-icon [icon]="faSearch"></fa-icon></a>
+        <a class="headerIcon" routerLink="/collection" routerLinkActive="active"><fa-icon [icon]="faBook"></fa-icon></a>
+        
+            
+        <div *ngIf="user;then signOut else signIn"></div>
+        <ng-template #signIn>
+            <fa-icon class="headerIcon" (click)="handleSignIn()" [icon]="faGoogle"></fa-icon>
+        </ng-template>
+        <ng-template #signOut>
+            <img src={{user.photoURL}} alt="">
+            <fa-icon class="headerIcon" (click)="handleSignOut()" [icon]="faSignOutAlt"></fa-icon>
+        </ng-template> 
+        <!-- <button (click)="logUser()">ccc</button>   -->
     </div>  
 </header>
 <router-outlet></router-outlet>

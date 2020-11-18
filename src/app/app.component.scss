@@ -15,9 +15,23 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        a {
+        
+        img {
+            height: 35px;
+            border-radius: 5px;
             margin: $base-spacing;
+        }
+
+        .headerIcon {
+            color: black;
+            margin: $base-spacing;
+            transform: scale(1.5);
+            padding: $base-spacing;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(2);
+            }
         }
     }
 }
