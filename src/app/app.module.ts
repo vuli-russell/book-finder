@@ -10,6 +10,7 @@ import { ResultGalleryComponent } from './search/result-gallery/result-gallery.c
 import { FilterComponent } from './search/result-gallery/filter/filter.component';
 import { AngularFireModule } from "@angular/fire";
 import { BookCardComponent } from './book-card/book-card.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const routes: Routes = [
   {path: "", component: SearchComponent},
@@ -42,8 +43,8 @@ const firebaseConfig = {
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    FormsModule
-
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

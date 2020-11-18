@@ -40,14 +40,6 @@ export class ResultGalleryComponent implements OnInit {
     this.sortBooksArr(sortOrder)
   }
 
-  handleAddFavorite(book){
-    this.collectionsService.addBookToFavorite(book)
-  }
-
-  handleRemoveFavorite(book){
-    this.collectionsService.deleteBookFromFavorites(book)
-  }
-
   sortBooksArr(sortOrder?:string) {
     let sortFunction: (a:CleanedBookInfo,b:CleanedBookInfo) => number;
     switch (sortOrder) {

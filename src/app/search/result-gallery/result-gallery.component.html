@@ -1,19 +1,4 @@
-<app-filter (onSortSelected)="handleSortSelected($event)"></app-filter>
-<section class="bookGallery">
-    <div *ngFor = "let book of sortedBooksArr" class="bookCard">
-        <img src={{book.image}} alt="">
-        <p>{{book.title}}</p>
-        <p class="author" *ngFor = "let author of book.authors">
-            {{author}}
-        </p>
-
-        <div *ngIf="book.isFav;then removeFav else addFav"></div>
-        <ng-template #removeFav>
-			<button (click)="handleRemoveFavorite(book)">Remove From Favorites</button>
-		</ng-template>
-		<ng-template #addFav>
-			<button (click)="handleAddFavorite(book)">Add to Favorites</button>
-        </ng-template>
-
-    </div>
+<app-filter class="filter" (onSortSelected)="handleSortSelected($event)"></app-filter>
+<section class="bookGallery" >
+    <app-book-card *ngFor = "let book of sortedBooksArr" [book]="book"></app-book-card>    
 </section>

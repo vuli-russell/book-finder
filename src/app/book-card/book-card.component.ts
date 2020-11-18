@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CleanedBookInfo } from '../search/search.models';
+import { CollectionsService } from "../collections.service";
 
 @Component({
   selector: 'app-book-card',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() book: CleanedBookInfo
+
+  constructor(private collectionsService: CollectionsService) { }
 
   ngOnInit(): void {
+  }
+
+  handleAddFavorite(book){
+    this.collectionsService.addBookToFavorite(book)
+  }
+
+  handleRemoveFavorite(book){
+    this.collectionsService.deleteBookFromFavorites(book)
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from "./search.service";
-import { GoogleBookItem, CleanedBookInfo } from './search.models';
+import { CleanedBookInfo } from './search.models';
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-search',
@@ -14,6 +15,7 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  faSearch=faSearch;
   areBooksLoaded = false;
   booksArr: CleanedBookInfo[];
   searchText: string;

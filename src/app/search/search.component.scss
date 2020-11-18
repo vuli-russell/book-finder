@@ -1,12 +1,34 @@
 @import "../../styles.scss";
 
 .search {
+    position: relative;
+    top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: $base-spacing;
-    // background-color: $search-background-color;
     border-radius: $base-spacing;
+
+    .btn {
+        position: relative;
+        left: 0;
+        background-color: $accent-color; 
+        font-size: $text-size;
+        width: $text-size*4;
+        transition: all 0.5s ease;
+
+        i {
+        }
+        
+        &:hover {
+            width: $text-size*6;
+            left: $text-size*1;
+            
+            &::after{
+                content: "Search";
+            }
+        } 
+    }
 
     img {
         width: 500px;
