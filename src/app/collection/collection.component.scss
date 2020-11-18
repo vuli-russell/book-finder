@@ -1,0 +1,27 @@
+@import "../../styles.scss";
+
+.collection {
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+            flex-grow: 1;
+        }
+        img {
+            margin: $base-spacing*4;
+            flex-grow: 0;
+            max-width: 20%;
+        }
+    
+    }
+
+    .gallery {
+        flex-grow: 1;
+        display: flex;
+    }
+}

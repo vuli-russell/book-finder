@@ -1,7 +1,15 @@
-<div *ngFor = "let book of books" class="bookCard">
-    <img src={{book.image}} alt="">
-    <p>{{book.title}}</p>
-    <p class="author" *ngFor = "let author of book.authors">
-        {{author}}
-    </p>
-</div>
+<section class="collection">
+    <header class="header">
+        <img src="../../assets/images/bookshelves.svg" alt="bookshelves">
+        <h1>Your Collection</h1>
+    </header>
+    <div class="gallery">
+        <div *ngFor = "let book of books" class="bookCard">
+            <img src={{book.image}} alt="">
+            <p>{{book.title}}</p>
+            <p class="author" *ngFor = "let author of book.authors">
+                {{author}}
+            </p>
+        </div>
+    </div>
+</section>

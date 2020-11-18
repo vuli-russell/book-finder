@@ -1,8 +1,8 @@
 .bookGallery {
-    height: 100%;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+
     .bookCard {
         display: flex;
         flex-direction: column;

@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ResultGalleryComponent } from './search/result-gallery/result-gallery.component';
 import { FilterComponent } from './search/result-gallery/filter/filter.component';
 import { AngularFireModule } from "@angular/fire";
+import { BookCardComponent } from './book-card/book-card.component';
 
 const routes: Routes = [
   {path: "", component: SearchComponent},
@@ -34,6 +35,7 @@ const firebaseConfig = {
     CollectionComponent,
     ResultGalleryComponent,
     FilterComponent,
+    BookCardComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),

@@ -1,1 +1,18 @@
 @import "../styles.scss";
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid black;
+
+    .links{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            margin: $base-spacing;
+        }
+    }
+}
