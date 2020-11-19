@@ -13,7 +13,6 @@ export class UserService {
   constructor(private auth: AngularFireAuth) {
     this.auth.onAuthStateChanged(user => {
       this.authUser$.next(user);
-      console.log(user)
     })
   }
 
