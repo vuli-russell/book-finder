@@ -1,10 +1,11 @@
 <section class="collection">
     <header class="landing">
         <img src="../../assets/images/bookshelves.svg" alt="bookshelves">
-        <h1>Your Collection</h1>
+        
     </header>
     
         <ng-container *ngIf="collectionsService.user$ | async as user; else signInMessage">
+            <h1>{{(userService.authUser$|async).displayName}}'s Collection</h1>
             <div class="gallery" *ngIf="user.books.length; else addBooksMessage">
                 <app-book-card *ngFor ="let book of user.books" [book]="book"></app-book-card>
             </div>
