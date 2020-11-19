@@ -24,10 +24,9 @@ export class ResultGalleryComponent implements OnInit {
     private collectionsService: CollectionsService) { }
 
   ngOnInit(): void {
-    this.collectionsService.booksStream.subscribe(
+    this.collectionsService.user$.subscribe(
       //get favorite books and map their ids
       res => {
-        console.log(res)
         this.favourites = res ? res.books.map(book => book.id) : []
         this.booksArr = this.booksArr.map(book => ({...book, isFav: this.favourites.includes(book.id) ? true : false}));
         this.sortedBooksArr = this.sortedBooksArr.map(book => ({...book, isFav: this.favourites.includes(book.id) ? true : false}));

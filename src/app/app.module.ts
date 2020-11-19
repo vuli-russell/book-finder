@@ -46,7 +46,9 @@ const firebaseConfig = {
     FormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

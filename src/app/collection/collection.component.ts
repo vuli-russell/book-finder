@@ -1,20 +1,16 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { CollectionsService } from "../collections.service";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-collection',
   templateUrl: './collection.component.html',
   styleUrls: ['./collection.component.scss']
 })
-export class CollectionComponent implements OnInit {
-
-  constructor(private collectionsService: CollectionsService) { }
+export class CollectionComponent {
 
   books: any;
+  userSubscription: Subscription;
 
-  ngOnInit(): void {
-    this.collectionsService.booksStream.subscribe(
-      res => {this.books = res.books.length ? res.books.map(book => ({...book, isFav: true})) : null;}
-    )
-  }
+  constructor(public collectionsService: CollectionsService) { }
 }

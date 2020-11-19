@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { faSearch, faBook, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { UserService } from "./user.service";
@@ -10,15 +10,18 @@ import { UserService } from "./user.service";
 })
 export class AppComponent implements OnInit{
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private ref: ChangeDetectorRef) {
   }
 
   user: object|null = null;
 
-  ngOnInit(): void {
-    this.userService.watchUser((value) => (this.user=value))
+  ngOnInit(): void{
+    this.userService.authUser$.subscribe(user => {
+      this.user=user;
+      this.ref.detectChanges();
+    })
   }
-  
+
   title = 'book-finder';
 
   faSearch = faSearch;
@@ -33,8 +36,4 @@ export class AppComponent implements OnInit{
   handleSignOut(){
     this.userService.logOut();
   }
-
-  // logUser(){
-  //   console.log(this.user)
-  // }
 }

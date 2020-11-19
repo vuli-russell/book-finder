@@ -4,13 +4,15 @@
         <h1>Your Collection</h1>
     </header>
     
-        <div *ngIf="books;then bookCards else addBooksMessage"></div>
-
-        <ng-template #bookCards>
+        <ng-container *ngIf="collectionsService.user$ | async as user; else addBooksMessage">
             <div class="gallery">
-                <app-book-card *ngFor = "let book of books" [book]="book"></app-book-card>
+                <app-book-card *ngFor ="let book of user.books" [book]="book"></app-book-card>
             </div>
-        </ng-template>
+        </ng-container>
+
+        <!-- <ng-template #bookCards>
+         
+        </ng-template> -->
         <ng-template #addBooksMessage>
             <p>Your Collection is empty!</p>
             <p>Please <a href="/">Search</a> for books to add them to your Collection</p>

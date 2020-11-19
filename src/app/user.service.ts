@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private auth: AngularFireAuth) {}
+  public authUser$ = new BehaviorSubject(null);
+
+  constructor(private auth: AngularFireAuth) {
+    this.auth.onAuthStateChanged(user => {
+      this.authUser$.next(user);
+    })
+  }
 
   logIn() {
     this.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
@@ -15,15 +22,5 @@ export class UserService {
 
   logOut(){
     this.auth.signOut()
-  }
-
-  watchUser(fn: (value:firebase.User|null) => void){
-    this.auth.onAuthStateChanged(user => {
-      if(user){
-        fn(user)
-      }else{
-        fn(null)
-      }
-    })
   }
 }
