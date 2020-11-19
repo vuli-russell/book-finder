@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component } from '@angular/core';
 import { CollectionsService } from "../collections.service";
-import { Subscription } from 'rxjs';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-collection',
@@ -10,7 +10,10 @@ import { Subscription } from 'rxjs';
 export class CollectionComponent {
 
   books: any;
-  userSubscription: Subscription;
 
-  constructor(public collectionsService: CollectionsService) { }
+  constructor(public collectionsService: CollectionsService, private userService: UserService) { }
+
+  handleSignIn(){
+    this.userService.logIn();
+  }
 }
